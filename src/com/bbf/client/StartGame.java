@@ -1,3 +1,5 @@
+package src.com.bbf.client;
+
 import java.io.Serializable;
 import java.util.Scanner;
 
