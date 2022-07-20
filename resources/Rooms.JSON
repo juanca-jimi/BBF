@@ -1,0 +1,17 @@
+{
+  "DEMO_Dungeon":{
+    "Available_Directions": ["west","east","north","south"],
+    "Enemies": {
+        "goblin": {
+            "health": 3,
+            "attack": 1,
+            "xp value": 2,
+            "gold":3,
+            "armor": 0
+    }},
+    "items": {
+        "gold": 10,
+        "health potion": 3
+    }
+  }
+}
