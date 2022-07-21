@@ -63,6 +63,9 @@ public class StartGame
 
     public class Game implements Serializable
     {
+        public Room currentRoom;
+        public Item[] roomItems;
+        public Route[] routes;
 
         public void play()
         {
@@ -74,7 +77,15 @@ public class StartGame
 
         private void showOptions()
         {
-            System.out.println("to quit the game enter \"q\"");
+            System.out.println("You are in room " + currentRoom);
+            System.out.println("The items in the rooms are...");
+            for (item : roomItems)
+                System.out.println("\t" + item);
+            System.out.println("The possible routes to take are...");
+            for(route : routes)
+                System.out.println("\t" + route);
+
+            System.out.println("\nTo quit the game enter \"q\"");
             Scanner myObj = new Scanner(System.in);
 
             String input = myObj.nextLine();
