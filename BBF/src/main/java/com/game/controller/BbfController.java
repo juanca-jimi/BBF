@@ -1,4 +1,4 @@
-package com.bbf.controller;
+package com.game.controller;
 
 public class BbfController {
 

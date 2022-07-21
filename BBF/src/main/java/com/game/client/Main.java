@@ -1,4 +1,4 @@
-package com.bbf.client;
+package com.game.client;
 
 import com.bbf.controller.BbfController;
 

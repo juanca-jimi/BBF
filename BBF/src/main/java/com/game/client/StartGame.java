@@ -1,4 +1,4 @@
-package src.com.bbf.client;
+package com.game.client;
 
 import java.io.Serializable;
 import java.util.Scanner;
@@ -8,7 +8,8 @@ public class StartGame
     public Game currentGame;
 
 
-    public StartGame(){
+    public StartGame()
+    {
         welcomeMessage();
         chooseGameOptions();
         currentGame.play();
@@ -25,7 +26,7 @@ public class StartGame
         Scanner myObj = new Scanner(System.in);
 
         String userInput = myObj.nextLine();
-        if(userInput.equals("1"))
+        if (userInput.equals("1"))
             freshGame();
     }
 
@@ -37,11 +38,11 @@ public class StartGame
     public void loadGame()
     {
         //TODO: retrieve saved games
-        if(!GameSaver.hasSavedGames() && GameSaver.playSavedGames())
+        if (!GameSaver.hasSavedGames() && GameSaver.playSavedGames())
         {
-           currentGame = null;
+            currentGame = null;
             // TODO: 7/20/22 use GameSaver.selectSavedGame() above
-           return;
+            return;
         }
         currentGame = new Game();
     }
@@ -63,6 +64,9 @@ public class StartGame
 
     public class Game implements Serializable
     {
+        public Room currentRoom;
+        public Item[] roomItems;
+        public Route[] routes;
 
         public void play()
         {
@@ -72,15 +76,40 @@ public class StartGame
             }
         }
 
+        private void updateGameRoom(Route route)
+        {
+            // TODO: 7/21/22 update currentRoom, roomItems, & routes fields in the game class when passed in which route was taken
+        }
+
         private void showOptions()
         {
-            System.out.println("to quit the game enter \"q\"");
+            System.out.println("You are in room " + currentRoom);
+            System.out.println("The items in the rooms are...");
+            for (var item : roomItems)
+                System.out.println("\t" + item);
+            System.out.println("The possible routes to take are...");
+            for (var route : routes)
+                System.out.println("\t" + route);
+
+            System.out.println("\nTo quit the game enter \"q\"");
             Scanner myObj = new Scanner(System.in);
 
             String input = myObj.nextLine();
 
-            if(input.equals("q"))
+            if (input.equals("q"))
                 endGame();
+        }
+
+        private class Room
+        {
+        }
+
+        private class Item
+        {
+        }
+
+        private class Route
+        {
         }
     }
 
