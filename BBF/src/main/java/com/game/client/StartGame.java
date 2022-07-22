@@ -1,12 +1,14 @@
 package com.game.client;
 
+import com.game.controller.Location;
+import com.game.error.InvalidLocationException;
+//----
 import java.io.Serializable;
 import java.util.Scanner;
 
 public class StartGame
 {
     public Game currentGame;
-
 
     public StartGame()
     {
@@ -17,7 +19,7 @@ public class StartGame
 
     private void welcomeMessage()
     {
-
+        System.out.println("This is a welcome message");
     }
 
     private void chooseGameOptions()
@@ -66,7 +68,7 @@ public class StartGame
     {
         public Room currentRoom;
         public Item[] roomItems;
-        public Route[] routes;
+        public Location[] locations;
 
         public void play()
         {
@@ -76,28 +78,62 @@ public class StartGame
             }
         }
 
-        private void updateGameRoom(Route route)
+        private void updateGameRoom(Location location)
         {
-            // TODO: 7/21/22 update currentRoom, roomItems, & routes fields in the game class when passed in which route was taken
+            // TODO: 7/21/22 update currentRoom, roomItems, & locations fields in the game class when passed in which location was taken
         }
 
         private void showOptions()
         {
-            System.out.println("You are in room " + currentRoom);
-            System.out.println("The items in the rooms are...");
-            for (var item : roomItems)
-                System.out.println("\t" + item);
-            System.out.println("The possible routes to take are...");
-            for (var route : routes)
-                System.out.println("\t" + route);
+            showCurrentRoom();
+            showRoomItems();
+            showValidLocations();
 
             System.out.println("\nTo quit the game enter \"q\"");
-            Scanner myObj = new Scanner(System.in);
 
+            Scanner myObj = new Scanner(System.in);
             String input = myObj.nextLine();
 
             if (input.equals("q"))
                 endGame();
+        }
+
+        public void showCurrentRoom()
+        {
+            System.out.println("You are in room " + currentRoom);
+        }
+
+        public void showRoomItems()
+        {
+            System.out.println("The items in the rooms are...");
+            for (var item : currentGame.roomItems)
+                System.out.println("\t" + item);
+        }
+
+        public void showValidLocations()
+        {
+            System.out.println("The possible locations to take are...");
+            for (var location : currentGame.locations)
+                System.out.println("\t" + location);
+        }
+
+        public void move(Location location)
+        {
+            if (isValidLocation(location))
+            {
+                updateGameRoom(location);
+            } else
+            {
+                throw new InvalidLocationException(location, locations);
+            }
+        }
+
+        private boolean isValidLocation(Location location)
+        {
+            for (var validPath : locations)
+                if (location.equals(validPath))
+                    return true;
+            return false;
         }
 
         private class Room
@@ -108,9 +144,7 @@ public class StartGame
         {
         }
 
-        private class Route
-        {
-        }
+
     }
 
 

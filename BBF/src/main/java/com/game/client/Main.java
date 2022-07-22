@@ -1,6 +1,6 @@
 package com.game.client;
 
-import com.bbf.controller.BbfController;
+import com.game.controller.BbfController;
 
 import java.io.FileNotFoundException;
 
