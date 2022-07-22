@@ -16,7 +16,10 @@ public class StartGame
 
     private void welcomeMessage()
     {
-
+        System.out.println("BBF: Bigger Badder Faster\n");
+        System.out.println("Plaseholder for more info on the game\n");
+        System.out.println("Go [location] north, south, east, west\n");
+        System.out.println("Get [item] get any item available in the room\n");
     }
 
     private void chooseGameOptions()
