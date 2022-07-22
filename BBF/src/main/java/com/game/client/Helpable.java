@@ -1,4 +1,5 @@
-package src.com.bbf.client;
+package com.game.client;
+
 
 public interface Helpable
 {

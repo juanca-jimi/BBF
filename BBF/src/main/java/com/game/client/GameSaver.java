@@ -1,4 +1,4 @@
-package src.com.bbf.client;
+package com.game.client;
 
 public class GameSaver implements Helpable
 {

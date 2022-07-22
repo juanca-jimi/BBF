@@ -1,15 +1,16 @@
 {
   "DEMO_Dungeon":{
+    "Prompt": "You find yourself in a cold wet dungeon (DEMO VERSION)",
     "Available_Directions": ["west","east","north","south"],
     "Enemies": {
-        "goblin": {
+        "Goblin": {
             "health": 3,
             "attack": 1,
             "xp value": 2,
             "gold":3,
             "armor": 0
     }},
-    "items": {
+    "Items": {
         "gold": 10,
         "health potion": 3
     }
