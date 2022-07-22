@@ -1,3 +1,5 @@
+package BBF.src.main.java.com.game.controller;
+
 import java.util.Scanner;
 //import java.io.StreamTokenizer;
 

@@ -1,4 +1,4 @@
-package com.game.client;
+package BBF.src.main.java.com.game.client;
 
 import com.game.controller.Location;
 import com.game.error.InvalidLocationException;
