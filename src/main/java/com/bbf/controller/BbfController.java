@@ -2,6 +2,8 @@ package com.bbf.controller;
 
 import com.bbf.client.GameSaver;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.Serializable;
 import java.util.Scanner;
 
@@ -18,10 +20,23 @@ public class BbfController
 
     private void welcomeMessage()
     {
+        try {
+            printSplash();
+        }
+        catch (Exception e){
+            System.out.println("print splash failed");
+        }
         System.out.println("BBF: Bigger Badder Faster\n");
         System.out.println("Plaseholder for more info on the game\n");
         System.out.println("Go [location] north, south, east, west\n");
         System.out.println("Get [item] get any item available in the room\n");
+    }
+    private void printSplash() throws FileNotFoundException {
+        File splashTxt = new File("src/main/resources/com/bbf/SplashScreen_1.txt");
+        Scanner scnr = new Scanner(splashTxt);
+
+        while (scnr.hasNextLine())
+            System.out.println(scnr.nextLine());
     }
 
     private void chooseGameOptions()
