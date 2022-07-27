@@ -29,16 +29,16 @@ public class BbfController
             System.out.println("print splash failed");
         }
         System.out.println("BBF: Bigger Badder Faster\n");
-        System.out.println("Plaseholder for more info on the game\n");
+        System.out.println("Placeholder for more info on the game\n");
         System.out.println("Go [location] north, south, east, west\n");
         System.out.println("Get [item] get any item available in the room\n");
     }
     private void printSplash() throws FileNotFoundException {
         File splashTxt = new File("src/main/resources/com/bbf/SplashScreen_1.txt");
-        Scanner scnr = new Scanner(splashTxt);
+        Scanner scan = new Scanner(splashTxt);
 
-        while (scnr.hasNextLine())
-            System.out.println(scnr.nextLine());
+        while (scan.hasNextLine())
+            System.out.println(scan.nextLine());
     }
 
     private void chooseGameOptions()
@@ -105,9 +105,7 @@ public class BbfController
 //            System.out.println("The items in the rooms are...");
 //            for (item : roomItems)
 //                System.out.println("\t" + item);
-//            System.out.println("The possible routes to take are...");
-//            for(route : routes)
-//                System.out.println("\t" + route);
+//
             showCurrentRoom();
             showRoomItems();
 
@@ -132,7 +130,7 @@ public class BbfController
 
         public void showRoomItems()
         {
-            System.out.println("The items in the rooms are...");
+            System.out.println("The items in the current rooms are...");
             for (var item : currentGame.roomItems)
                 System.out.println("\t" + item);
         }
@@ -142,6 +140,11 @@ public class BbfController
             //TODO
         }
 
+        public void showLocations()
+        {
+            System.out.println("The possible routes to take are...");
+            for(var route : locations)
+                System.out.println("\t" + route);
+        }
     }
-
 }
