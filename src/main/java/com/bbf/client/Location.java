@@ -1,7 +1,6 @@
 package com.bbf.client;
 
-public class Item
+public class Location
 {
 
 }
-

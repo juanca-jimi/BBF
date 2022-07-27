@@ -1,4 +1,4 @@
-package com.game.error;
+package com.bbf.error;
 
 public class InvalidLookException extends RuntimeException
 {

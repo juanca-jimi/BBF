@@ -1,6 +1,6 @@
-package com.game.error;
+package com.bbf.error;
 
-import com.game.controller.Location;
+import com.bbf.client.Location;
 
 public class InvalidLocationException extends RuntimeException
 {

@@ -1,6 +1,9 @@
 package com.bbf.controller;
 
 import com.bbf.client.GameSaver;
+import com.bbf.client.Location;
+import com.bbf.client.Item;
+import com.bbf.client.Room;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -84,7 +87,7 @@ public class BbfController
     {
         public Room currentRoom;
         public Item[] roomItems;
-        public Route[] routes;
+        public Location[] locations;
 
         public void play()
         {
@@ -116,6 +119,10 @@ public class BbfController
             if (input.equals("q"))
                 endGame();
 
+        }
+        public void updateGameRoom(String location)
+        {
+            // TODO: 7/21/22 update currentRoom, roomItems, & locations fields in the game class when passed in which location was taken
         }
 
         public void showCurrentRoom()

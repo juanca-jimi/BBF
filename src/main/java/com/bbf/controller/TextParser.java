@@ -1,11 +1,13 @@
 
-package com.game.controller;
+package com.bbf.controller;
 
-import com.game.client.StartGame;
-import com.game.error.InvalidCommandException;
-import com.game.error.InvalidGetException;
-import com.game.error.InvalidLocationException;
-import com.game.error.InvalidLookException;
+import com.bbf.client.Location;
+import com.bbf.controller.BbfController;
+import com.bbf.error.InvalidCommandException;
+import com.bbf.error.InvalidGetException;
+import com.bbf.error.InvalidLocationException;
+import com.bbf.error.InvalidLookException;
+import com.bbf.client.Item;
 
 import java.util.Scanner;
 //import java.io.StreamTokenizer;
@@ -24,7 +26,7 @@ public class TextParser
     }
 
     //METHODS-------------------------------------------------------------------
-    public void execute(StartGame.Game myGame, Location[] locations, Item[] items)
+    public void execute(BbfController.Game myGame, Location[] locations, Item[] items)
     {
         //THIS METHOD
         //CHECKS FOR ALL COMMANDS
@@ -62,12 +64,12 @@ public class TextParser
                     }
     }
 
-    private void lookAtLocation(StartGame.Game myGame, Location[] locations)
+    private void lookAtLocation(BbfController.Game myGame, Location[] locations)
     {
         // TODO: 7/26/22
     }
 
-    private void lookAtItem(StartGame.Game myGame, Item[] items)
+    private void lookAtItem(BbfController.Game myGame, Item[] items)
     {
         //TODO:
     }
@@ -78,7 +80,7 @@ public class TextParser
         return false;
     }
 
-    private void storeItem(StartGame.Game myGame, Item[] items)
+    private void storeItem(BbfController.Game myGame, Item[] items)
     {
         myGame.storeItem(getItemFromCommand(command));
     }
@@ -108,7 +110,7 @@ public class TextParser
         return false;
     }
 
-    public void move(Location[] locations, StartGame.Game myGame)
+    public void move(Location[] locations, BbfController.Game myGame)
     {
         if (isValidLocation(locations))
             //TODO: get the location from the whole command
