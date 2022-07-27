@@ -1,6 +1,9 @@
 package com.bbf.controller;
 
+import com.bbf.GameObjects.Demo_Room;
+import com.bbf.GameObjects.JSON_Controller;
 import com.bbf.client.GameSaver;
+import netscape.javascript.JSObject;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -83,9 +86,16 @@ public class BbfController
 
     public class Game implements Serializable
     {
-//        public Room currentRoom;
-//        public Item[] roomItems;
-//        public Route[] routes;
+        //object that contains all the items, enemies, directions you can go, treasure etc...
+        public Demo_Room currentRoom;
+        public JSON_Controller json_handler;
+        Game(){
+            this.json_handler = new JSON_Controller();
+            //use demo stuff until generator is built
+            File demoPath = new File("src/main/resources/com/bbf/DEMO_Room.JSON");
+            JSObject d
+            this.currentRoom = json_handler.JSON_Helper();
+        }
 
         public void play()
         {
