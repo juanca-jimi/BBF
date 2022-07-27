@@ -9,7 +9,6 @@ public class BbfController
 {
     public Game currentGame;
 
-
     public void execute(){
         welcomeMessage();
         chooseGameOptions();
@@ -48,7 +47,7 @@ public class BbfController
             // TODO: 7/20/22 use GameSaver.selectSavedGame() above
             return;
         }
-        currentGame = new Game();
+        freshGame();
     }
 
     public void endGame()
@@ -68,15 +67,17 @@ public class BbfController
 
     public class Game implements Serializable
     {
-//        public Room currentRoom;
-//        public Item[] roomItems;
-//        public Route[] routes;
+        public Room currentRoom;
+        public Item[] roomItems;
+        public Route[] routes;
 
         public void play()
         {
             while (true)
             {
                 showOptions();
+                TextParser command = new TextParser();
+                command.execute(this, locations, roomItems);
             }
         }
 
@@ -89,18 +90,36 @@ public class BbfController
 //            System.out.println("The possible routes to take are...");
 //            for(route : routes)
 //                System.out.println("\t" + route);
+            showCurrentRoom();
+            showRoomItems();
 
             System.out.println("\nTo quit the game enter \"q\"");
-            Scanner myObj = new Scanner(System.in);
 
+            Scanner myObj = new Scanner(System.in);
             String input = myObj.nextLine();
 
-            if(input.equals("q"))
+            if (input.equals("q"))
                 endGame();
+
         }
+
+        public void showCurrentRoom()
+        {
+            System.out.println("You are in room " + currentRoom);
+        }
+
+        public void showRoomItems()
+        {
+            System.out.println("The items in the rooms are...");
+            for (var item : currentGame.roomItems)
+                System.out.println("\t" + item);
+        }
+
+        public void storeItem(String itemFromCommand)
+        {
+            //TODO
+        }
+
     }
-
-
-    //NESTED INNER STATIC CLASS
 
 }

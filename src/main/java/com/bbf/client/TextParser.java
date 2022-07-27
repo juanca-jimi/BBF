@@ -1,3 +1,4 @@
+
 package com.game.controller;
 
 import com.game.client.StartGame;
@@ -9,7 +10,7 @@ import com.game.error.InvalidLookException;
 import java.util.Scanner;
 //import java.io.StreamTokenizer;
 
-public class TextParser implements Helpable
+public class TextParser
 {
     //CLASS FIELDS--------------------------------------------------------------
     private final String command;
@@ -27,25 +28,25 @@ public class TextParser implements Helpable
     {
         //THIS METHOD
         //CHECKS FOR ALL COMMANDS
+        // TODO: 7/27/22 make checks at runtime instead of hardcoding different options 
         if (isGoCommand())
-            if(isValidLocation(locations))
+            if (isValidLocation(locations))
                 move(locations, myGame);
 
             else if (isGetCommand())
-                if(isValidItem(items))
+                if (isValidItem(items))
                     storeItem(myGame, items);
 
                 else if (isLookCommand())
-                    if(isValidItem(items))
+                    if (isValidItem(items))
                         lookAtItem(myGame, items);
-                    else if(isValidLocation(locations))
+                    else if (isValidLocation(locations))
                         lookAtLocation(myGame, locations);
                     else
                         try
                         {
                             throw new InvalidLookException(command);
-                        }
-                        finally
+                        } finally
                         {
                             return;
                         }
@@ -90,14 +91,13 @@ public class TextParser implements Helpable
     private boolean isValidItem(Item[] items)
     {
         //TODO check if item from given
-        if(false)
+        if (false)
             return true;
         else
             try
             {
-                throw  new InvalidGetException();
-            }
-            finally
+                throw new InvalidGetException();
+            } finally
             {
                 return false;
             }
@@ -142,7 +142,7 @@ public class TextParser implements Helpable
         String[] words = command.split(" ");
 
         //Returns the last word in the command
-        return words[words.length-1];
+        return words[words.length - 1];
     }
 
     private void showValidLocations(Location[] locations)
@@ -159,8 +159,5 @@ public class TextParser implements Helpable
             return true;
         return false;
     }
-
-    public void helpscript(){
-
-    }
 }
+
