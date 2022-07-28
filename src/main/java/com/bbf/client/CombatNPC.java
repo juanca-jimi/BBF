@@ -1,25 +1,31 @@
 package com.bbf.client;
 
 public class CombatNPC extends Attacker
-{
-    //CLASS FIELDS--------------------------------------------------------------
+{//CLASS FIELDS--------------------------------------------------------------
     private double fightMultiplier;
+    private double reward = 100.0;
 
     //CONSTRUCTORS--------------------------------------------------------------
     public CombatNPC()
     {
-        this.name = "an anonymous character";
-        this.healthPoints = 1000;
+        setName("an anonymous character");
+        setHealthPoints(healthPoints);
         printStartingStatement();
     }
 
     public CombatNPC(String enemyName, short healthPoints)
     {
-        this.name = enemyName;
-        this.healthPoints = healthPoints;
+        setName(enemyName);
+        setHealthPoints(healthPoints);
         printStartingStatement();
     }
+    public CombatNPC(String enemyName, short healthPoints, double reward)
+    {
+        this(enemyName, healthPoints);
+        setReward(reward);
+        printReward();
 
+    }
 
     //METHODS-------------------------------------------------------------------
 
@@ -28,10 +34,26 @@ public class CombatNPC extends Attacker
     {
         System.out.printf("Starting war with %s.. they have %d healthpoints", this.name, this.healthPoints);
     }
+    public void printReward(){
+        System.out.printf("You'll earn %d if you win this fight!", this.reward);
+    }
 
 
     //GETTERS & SETTERS---------------------------------------------------------
+    public double getReward()
+    {
+        return reward;
+    }
 
+    public void setReward(double reward)
+    {
+        this.reward = reward;
+    }
+
+    public void setFightMultiplier(double fightMultiplier)
+    {
+        this.fightMultiplier = fightMultiplier;
+    }
 
     //TO STRING-----------------------------------------------------------------
 
