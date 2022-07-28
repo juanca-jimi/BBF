@@ -52,4 +52,7 @@ public abstract class Attacker
     public double getFightMultiplier(){
         return  this.getFightMultiplier();
     }
+    public double getWeaponMultiplier(){
+        return this.weapon.getWeaponMultiplier();
+    }
 }

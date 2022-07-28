@@ -10,7 +10,7 @@ public class Attack
     //CONSTRUCTORS--------------------------------------------------------------
     public Attack(Attacker attacker)
     {
-        this.fightMultiplier = attacker.getFightMultiplier();//METHODS-------------------------------------------------------------------
+        this.fightMultiplier = attacker.getFightMultiplier() + attacker.getWeaponMultiplier();//METHODS-------------------------------------------------------------------
     }
 
     //GETTERS & SETTERS---------------------------------------------------------
