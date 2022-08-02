@@ -3,13 +3,14 @@ package com.bbf.controller;
 
 import com.bbf.client.Helpable;
 import com.bbf.client.Location;
-import com.bbf.error.InvalidCommandException;
-import com.bbf.error.InvalidGetException;
-import com.bbf.error.InvalidLocationException;
-import com.bbf.error.InvalidLookException;
+import com.bbf.client.Player;
+import com.bbf.controller.commands.Command;
+import com.bbf.error.*;
 import com.bbf.client.Item;
+import org.reflections.Reflections;
 
 import java.util.Scanner;
+import java.util.Set;
 
 public class TextParser implements Helpable
 {
@@ -30,17 +31,25 @@ public class TextParser implements Helpable
     {
         //THIS METHOD
         //CHECKS FOR ALL COMMANDS
-        // TODO: 7/27/22 make checks at runtime instead of hardcoding different options 
+//        boolean commandExecuted = false;
+//        Reflections reflections = new Reflections("com.bbf.controller.commands");
+//        Set<Class<? extends Command>> Commands = reflections.getSubTypesOf(Command.class);
+//        for (Class<? extends Command> command : Commands)
+//        {
+//            if(command.getSimpleName().equalsIgnoreCase(getCommand()))
+//            {
+//                Object newCommand = new command();
+//
+//            }
+//        }
         if (isGoCommand())
         {
             if (isValidLocation(locations))
                 move(locations, myGame);
-
-        }
-        else if (isHelpCommand()){
+        } else if (isHelpCommand())
+        {
             helpscript(myGame);
-        }
-        else if (isGetCommand())
+        } else if (isGetCommand())
         {
             if (isValidItem(items))
                 storeItem(myGame, items);
@@ -54,6 +63,18 @@ public class TextParser implements Helpable
                 try
                 {
                     throw new InvalidLookException(command);
+                } finally
+                {
+                    return;
+                }
+        } else if (isHealCommand())
+        {
+            if (myGame.player.hasHealingItem())
+                myGame.player.heal();
+            else
+                try
+                {
+                    throw new InvalidHealCommand();
                 } finally
                 {
                     return;
@@ -72,11 +93,20 @@ public class TextParser implements Helpable
         }
     }
 
+    private boolean isHealCommand()
+    {
+        return false;
+    }
+
+    private String getCommand()
+    {
+        return null;
+    }
+
     private boolean isHelpCommand()
     {
-        if (command.contains("help")) //TODO: VERIFTY REGEX WITH SENIOR ENG
-            return true;
-        return false;
+        //TODO: VERIFTY REGEX WITH SENIOR ENG
+        return command.contains("help");
     }
 
     private void lookAtLocation(BbfController.Game myGame, Location[] locations)
@@ -172,9 +202,8 @@ public class TextParser implements Helpable
     private boolean isGoCommand()
     {
         //TODO: CHECKS FOR Synonyms
-        if (command.trim().toLowerCase().matches("^go{1}")) //TODO: VERIFTY REGEX WITH SENIOR ENG
-            return true;
-        return false;
+        //TODO: VERIFTY REGEX WITH SENIOR ENG
+        return command.trim().toLowerCase().matches("^go{1}");
     }
 
 

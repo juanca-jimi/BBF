@@ -1,10 +1,8 @@
 package com.bbf.controller;
 
-import com.bbf.client.GameSaver;
-import com.bbf.client.Location;
-import com.bbf.client.Item;
-import com.bbf.client.Room;
+import com.bbf.client.*;
 
+import javax.swing.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.Serializable;
@@ -88,6 +86,7 @@ public class BbfController
         public Room currentRoom;
         public Item[] roomItems;
         public Location[] locations;
+        public Player player;
 
         public void play()
         {
@@ -145,6 +144,24 @@ public class BbfController
             System.out.println("The possible routes to take are...");
             for(var route : locations)
                 System.out.println("\t" + route);
+        }
+
+        public void healPlayer()
+        {
+        }
+
+        public Player getPlayer()
+        {
+            return this.player;
+        }
+
+        //Overloaded
+        public void lookAt(Item item)
+        {
+        }
+
+        public void lookAt(Location location)
+        {
         }
     }
 }

@@ -1,9 +1,11 @@
 package com.bbf.client;
 
+import java.util.ArrayList;
+
 public class Player extends Attacker
 {
     //CLASS FIELDS--------------------------------------------------------------
-    private String item;
+    private ArrayList<Item> itemArrayList;
     protected Player player = null;
     private String name;
     public Purse purse;
@@ -25,14 +27,14 @@ public class Player extends Attacker
         this.player = player;
     }
 
-    public String getItem()
+    public ArrayList<Item> getItemArrayList()
     {
-        return item;
+        return this.itemArrayList;
     }
 
-    public void setItem(String item)
+    public void addItem(Item item)
     {
-        this.item = item;
+        this.itemArrayList.add(item);
     }
 
 
@@ -44,10 +46,23 @@ public class Player extends Attacker
     public String toString()
     {
         return "Player{" +
-                "item='" + item + '\'' +
+                "itemArrayList=" + itemArrayList +
                 ", player=" + player +
+                ", name='" + name + '\'' +
+                ", purse=" + purse +
+                ", damage=" + damage +
                 '}';
     }
+
+    public boolean hasHealingItem()
+    {
+        return false;
+    }
+
+    public void heal()
+    {
+    }
+
 
     //EQUALS--------------------------------------------------------------------
 
