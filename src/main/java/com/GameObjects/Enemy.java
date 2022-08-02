@@ -1,6 +1,8 @@
 package com.GameObjects;
 
-public class Enemy {
+import com.bbf.client.Attacker;
+
+public class Enemy extends Attacker {
     private String type;
     private int health;
     private int attack;

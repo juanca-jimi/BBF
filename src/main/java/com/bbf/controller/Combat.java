@@ -1,12 +1,11 @@
 package com.bbf.controller;
 
-import com.bbf.client.Attacker;
-import com.bbf.client.CombatNPC;
+import com.GameObjects.Enemy;
 import com.bbf.client.Player;
 
 public class Combat
 {
-    public static void fight(Player player, CombatNPC attacker)
+    public static void fight(Player player, Enemy attacker)
     {
 
         while (player.isAlive() && attacker.isAlive())
@@ -20,16 +19,17 @@ public class Combat
         whoDied(player, attacker);
     }
 
-    private static void whoDied(Player player, CombatNPC attacker)
+    private static void whoDied(Player player, Enemy attacker)
     {
         if (player.isAlive())
         {
             System.out.println("You win!");
 
-            player.purse.addMoney(attacker.getReward());
+            player.getPurse().setMoney(player.getPurse().getMoney()+ attacker.getGold());
         } else
         {
-            System.out.println("You lose!");
+            System.out.println("You lose! Game over!");
+            System.exit(0);
             // TODO: 7/28/22  System.out.println("Loading last saved point...");
         }
     }
