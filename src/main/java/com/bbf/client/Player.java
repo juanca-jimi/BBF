@@ -1,10 +1,12 @@
 package com.bbf.client;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Player extends Attacker {
-    //fields
-    private String item;
+public class Player extends Attacker
+{
+    //CLASS FIELDS--------------------------------------------------------------
+    private ArrayList<Item> itemArrayList;
     protected Player player = null;
     private String name;
     public Purse purse;
@@ -13,7 +15,8 @@ public class Player extends Attacker {
     //CONSTRUCTORS--------------------------------------------------------------
 
     //methods
-    public void attackWhenPrompt(String item) {
+    public void attackWhenPrompt(String item)
+    {
         System.out.println("Here is your current item or items: " + item);
 
         System.out.println("Do you want to attack? Just type the word attack: ");
@@ -21,56 +24,106 @@ public class Player extends Attacker {
         Scanner scanner = new Scanner(System.in);
         String userInput = scanner.nextLine().toLowerCase().trim();
 
-        if(userInput.equals("attack")) {
+        if (userInput.equals("attack"))
+        {
             System.out.println("You just attacked the " + item);
-        } else {
+        } else
+        {
             System.out.println("You have to type attack to continue");
             System.out.println("Try again!");
         }
         //attackWhenPrompt("");
     }
 
-    public String getItem() {
-        return item;
+    //METHODS-------------------------------------------------------------------
+
+    public ArrayList<Item> getItemArrayList()
+    {
+        return this.itemArrayList;
     }
 
-    public void setItem(String item) {
-        this.item = item;
+    public void addItem(Item item)
+    {
+        this.itemArrayList.add(item);
     }
 
-    public Player getPlayer() {
+    public String getItem()
+    {
+        return itemArrayList.get(0).toString();
+    }
+
+    public void setItem(String item)
+    {
+        this.addItem(new Item());
+    }
+
+    public Player getPlayer()
+    {
         return player;
     }
 
-    public void setPlayer(Player player) {
+    public void setPlayer(Player player)
+    {
         this.player = player;
     }
 
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name)
+    {
         this.name = name;
     }
 
-    public short getDamage() {
+    public short getDamage()
+    {
         return damage;
     }
 
-    public void setDamage(short damage) {
+    public void setDamage(short damage)
+    {
         this.damage = damage;
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "Player{" +
-                "item='" + item + '\'' +
+                "itemArrayList=" + itemArrayList +
                 ", player=" + player +
                 ", name='" + name + '\'' +
+                ", purse=" + purse +
                 ", damage=" + damage +
                 '}';
     }
+
+    public boolean hasHealingItem()
+    {
+        return false;
+    }
+
+    public void heal()
+    {
+    }
+
+
+    //EQUALS--------------------------------------------------------------------
+
+    //INNER CLASSES-------------------------------------------------------------
+
+
+
+
+
+
+
+=======
+        ", damage="+damage +
+        '}';
 }
+>>>>>>>f15bb3c44ef9ffe0230544bda350b8e97700ed8f
+        }
 
 
