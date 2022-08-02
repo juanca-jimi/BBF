@@ -4,11 +4,20 @@ import java.util.WeakHashMap;
 
 public abstract class Attacker
 {
+
+
     short healthPoints = 0;
+
     short damage = 0;
     boolean isAlive = true;
     Weapon weapon = new Fist();
+
+
+
     String name = null;
+
+
+
     double fightMultiplier = .1;
 
 
@@ -52,4 +61,48 @@ public abstract class Attacker
     public double getFightMultiplier(){
         return  this.getFightMultiplier();
     }
+    public void setFightMultiplier(double fightMultiplier)
+    {
+        this.fightMultiplier = fightMultiplier;
+    }
+    public double getWeaponMultiplier(){
+        return this.weapon.getWeaponMultiplier();
+    }
+
+
+    public void setDamage(short damage)
+    {
+        this.damage = damage;
+    }
+
+    public void setAlive(boolean alive)
+    {
+        isAlive = alive;
+    }
+
+    public Weapon getWeapon()
+    {
+        return weapon;
+    }
+
+    public void setWeapon(Weapon weapon)
+    {
+        this.weapon = weapon;
+    }
+
+    public String getName()
+    {
+        return name;
+    }
+
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+
+    public void setHealthPoints(short healthPoints)
+    {
+        this.healthPoints = healthPoints;
+    }
+
 }

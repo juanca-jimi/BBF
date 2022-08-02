@@ -7,6 +7,7 @@ public class Player extends Attacker {
     private String item;
     protected Player player = null;
     private String name;
+    public Purse purse;
     short damage = 0;
 
     //CONSTRUCTORS--------------------------------------------------------------

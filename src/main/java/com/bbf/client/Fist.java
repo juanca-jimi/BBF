@@ -1,6 +1,6 @@
 package com.bbf.client;
 
-public class Fist implements Weapon
+public class Fist extends Weapon
 {
 
 }
