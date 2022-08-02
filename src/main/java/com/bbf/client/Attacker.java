@@ -5,26 +5,19 @@ import java.util.WeakHashMap;
 public abstract class Attacker
 {
 
+    private String name;
+    private int healthPoints;
+    private double damage;
+    private boolean isAlive;
+    private Weapon weapon;
+    private double fightMultiplier;
 
-    short healthPoints = 0;
-
-    short damage = 0;
-    boolean isAlive = true;
-    Weapon weapon = new Fist();
-
-
-
-    String name = null;
-
-
-
-    double fightMultiplier = .1;
-
-
-    public boolean isAlive(){
-        return this.isAlive;
+    public Attacker(){
+        setAlive(true);
+        setHealthPoints(5);
+        setDamage(1);
+        setWeapon(new Fist());
     }
-
 
     public Attack attack()
     {
@@ -35,74 +28,59 @@ public abstract class Attacker
     {
         setDamage(attack.getDamage());
         if(getHealthPoints() <= getDamage())
-            setIsAlive(false);
+            setAlive(false);
     }
 
-    private void setIsAlive(boolean b)
-    {
-        this.isAlive = b;
-    }
 
-    private short getDamage()
-    {
-        return  this.damage;
-    }
-
-    private short getHealthPoints()
-    {
-        return this.healthPoints;
-    }
-
-    void setDamage(double damage)
-    {
-        this.damage += damage;
-    }
-
-    public double getFightMultiplier(){
-        return  this.getFightMultiplier();
-    }
-    public void setFightMultiplier(double fightMultiplier)
-    {
-        this.fightMultiplier = fightMultiplier;
-    }
     public double getWeaponMultiplier(){
         return this.weapon.getWeaponMultiplier();
     }
 
-
-    public void setDamage(short damage)
-    {
-        this.damage = damage;
-    }
-
-    public void setAlive(boolean alive)
-    {
-        isAlive = alive;
-    }
-
-    public Weapon getWeapon()
-    {
-        return weapon;
-    }
-
-    public void setWeapon(Weapon weapon)
-    {
-        this.weapon = weapon;
-    }
-
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
-    public void setName(String name)
-    {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public void setHealthPoints(short healthPoints)
-    {
+    public int getHealthPoints() {
+        return healthPoints;
+    }
+
+    public void setHealthPoints(int healthPoints) {
         this.healthPoints = healthPoints;
     }
 
+    public double getDamage() {
+        return damage;
+    }
+
+    public void setDamage(double damage) {
+        this.damage = damage;
+    }
+
+    public boolean isAlive() {
+        return isAlive;
+    }
+
+    public void setAlive(boolean alive) {
+        isAlive = alive;
+    }
+
+    public Weapon getWeapon() {
+        return weapon;
+    }
+
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
+    }
+
+    public double getFightMultiplier() {
+        return fightMultiplier;
+    }
+
+    public void setFightMultiplier(double fightMultiplier) {
+        this.fightMultiplier = fightMultiplier;
+    }
 }

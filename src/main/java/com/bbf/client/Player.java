@@ -1,22 +1,28 @@
 package com.bbf.client;
 
+import com.GameObjects.Item;
+
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
-public class Player extends Attacker
-{
+public class Player extends Attacker {
     //CLASS FIELDS--------------------------------------------------------------
-    private ArrayList<Item> itemArrayList;
-    protected Player player = null;
+    private List<Item> inventory;
     private String name;
-    public Purse purse;
-    short damage = 0;
+    private Purse purse;
+    private int damage;
+
 
     //CONSTRUCTORS--------------------------------------------------------------
-
+    public Player(){
+    setDamage(0);
+    setInventory(new ArrayList<Item>());
+    setPurse(new Purse());
+    setDamage(0);
+    }
     //methods
-    public void attackWhenPrompt(String item)
-    {
+    public void attackWhenPrompt(String item) {
         System.out.println("Here is your current item or items: " + item);
 
         System.out.println("Do you want to attack? Just type the word attack: ");
@@ -24,11 +30,9 @@ public class Player extends Attacker
         Scanner scanner = new Scanner(System.in);
         String userInput = scanner.nextLine().toLowerCase().trim();
 
-        if (userInput.equals("attack"))
-        {
+        if (userInput.equals("attack")) {
             System.out.println("You just attacked the " + item);
-        } else
-        {
+        } else {
             System.out.println("You have to type attack to continue");
             System.out.println("Try again!");
         }
@@ -36,94 +40,78 @@ public class Player extends Attacker
     }
 
     //METHODS-------------------------------------------------------------------
-
-    public ArrayList<Item> getItemArrayList()
-    {
-        return this.itemArrayList;
+    public boolean hasHealingItem() {
+        boolean inventoryContainsPotion = false;
+        for (Item i :
+                inventory) {
+            if (i.getType().equalsIgnoreCase("Health Potion")) inventoryContainsPotion = true;
+        }
+        return inventoryContainsPotion;
     }
 
-    public void addItem(Item item)
-    {
-        this.itemArrayList.add(item);
+    public void heal() {
+        if (hasHealingItem()){
+            for (Item i :
+                    inventory) {
+                if (i.getType().equalsIgnoreCase("Health Potion")){
+                    inventory.remove(i);
+                    break;
+                }
+            }
+        }
     }
 
-    public String getItem()
-    {
-        return itemArrayList.get(0).toString();
+    public List<Item> getInventory() {
+        return inventory;
     }
 
-    public void setItem(String item)
-    {
-        this.addItem(new Item());
+    public void setInventory(List<Item> inventory) {
+        this.inventory = inventory;
     }
 
-    public Player getPlayer()
-    {
-        return player;
-    }
-
-    public void setPlayer(Player player)
-    {
-        this.player = player;
-    }
-
-    public String getName()
-    {
+    @Override
+    public String getName() {
         return name;
     }
 
-    public void setName(String name)
-    {
+    @Override
+    public void setName(String name) {
         this.name = name;
     }
 
-    public short getDamage()
-    {
+    public Purse getPurse() {
+        return purse;
+    }
+
+    public void setPurse(Purse purse) {
+        this.purse = purse;
+    }
+
+    public double getDamage() {
         return damage;
     }
 
-    public void setDamage(short damage)
-    {
+    public void setDamage(int damage) {
         this.damage = damage;
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "Player{" +
-                "itemArrayList=" + itemArrayList +
-                ", player=" + player +
+                "inventory=" + inventory +
                 ", name='" + name + '\'' +
                 ", purse=" + purse +
                 ", damage=" + damage +
                 '}';
     }
 
-    public boolean hasHealingItem()
-    {
-        return false;
-    }
-
-    public void heal()
-    {
-    }
-
-
     //EQUALS--------------------------------------------------------------------
 
     //INNER CLASSES-------------------------------------------------------------
 
 
-
-
-
-
-
-=======
-        ", damage="+damage +
-        '}';
 }
->>>>>>>f15bb3c44ef9ffe0230544bda350b8e97700ed8f
-        }
+
+
 
 
