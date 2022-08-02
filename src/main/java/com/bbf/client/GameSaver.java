@@ -34,8 +34,9 @@ public class GameSaver implements Helpable
         return false;
     }
 
-    public void helpscript()
+    @Override
+    public void helpscript(BbfController.Game game)
     {
-        //TODO: give user information on loading game functionality
+
     }
 }
