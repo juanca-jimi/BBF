@@ -1,5 +1,6 @@
 package org.bbf;
 
+import com.bbf.client.Player;
 import com.bbf.controller.BbfController;
 
 public class App
@@ -8,5 +9,8 @@ public class App
     {
         BbfController controller = new BbfController();
         controller.execute();
+//        Player controller = new Player();
+//        //controller.execute();
+//        controller.attackWhenPrompt("key");
     }
 }
