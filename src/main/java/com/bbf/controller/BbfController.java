@@ -4,6 +4,7 @@ import com.bbf.client.GameSaver;
 import com.bbf.client.Location;
 import com.bbf.client.Item;
 import com.bbf.client.Room;
+import com.bbf.client.Player;
 
 import java.io.File;
 import java.io.FileNotFoundException;

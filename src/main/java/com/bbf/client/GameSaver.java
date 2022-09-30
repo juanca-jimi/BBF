@@ -35,8 +35,7 @@ public class GameSaver implements Helpable
     }
 
     @Override
-    public void helpscript(BbfController.Game game)
-    {
+    public void helpscript(BbfController.Game game) {
 
     }
 }

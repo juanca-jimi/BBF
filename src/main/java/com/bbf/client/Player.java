@@ -15,7 +15,7 @@ public class Player extends Attacker {
     public void attackWhenPrompt(String item) {
         System.out.println("Here is your current item or items: " + item);
 
-        System.out.println("Do you want to attack? Just type the word attack: ");
+        System.out.println("Do you want to attack your item? Just type the word attack: ");
 
         Scanner scanner = new Scanner(System.in);
         String userInput = scanner.nextLine().toLowerCase().trim();
@@ -25,6 +25,8 @@ public class Player extends Attacker {
         } else {
             System.out.println("You have to type attack to continue");
             System.out.println("Try again!");
+            System.out.println("Test");
+            System.out.println("test again!");
         }
         //attackWhenPrompt("");
     }
